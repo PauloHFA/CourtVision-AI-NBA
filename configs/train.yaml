@@ -1,0 +1,19 @@
+fixture_path: data/fixtures/synthetic_season.json
+feature_version: features-1
+model_version: ml-0.1.0
+algorithm: compare
+random_seed: 42
+min_prior_games: 3
+primary_metric: brier_score
+# Gate proposto em decisions.yaml. Não é um resultado já medido.
+material_brier_gain: 0.005
+enable_xgboost: true
+# O teste externo não entra no ajuste, na busca nem na calibração.
+train_seasons: [2022]
+validation_seasons: [2023]
+test_seasons: [2024]
+evaluate_heldout: false
+calibration_method: sigmoid
+calibration_fraction: 0.4
+artifact_dir: models
+report_path: reports/experiment_latest.json

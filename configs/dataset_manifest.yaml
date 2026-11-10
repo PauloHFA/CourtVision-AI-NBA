@@ -1,0 +1,21 @@
+dataset_id: courtvision-nba-v1
+provider: BALLDONTLIE
+provider_terms_checked_at: 2026-11-08
+# Recorte sugerido pela especificação. A coleta real ainda não foi executada.
+seasons: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+initial_import_seasons: [2023]
+competition: nba
+season_phase: regular
+final_status_only: true
+unit: game
+label: home_team_win
+as_of_policy: strictly_prior_calendar_day
+source_endpoints:
+  - /v1/teams
+  - /v1/games
+feature_spec_version: features-1
+snapshot_sha256: null
+license_review_status: supplier_terms_checked_third_party_open
+notes: >
+  Fixtures versionados neste repositório são sintéticos.
+  Dados brutos da API não devem ser publicados como feed substituto.

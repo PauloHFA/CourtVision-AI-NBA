@@ -1,0 +1,31 @@
+# Decisões operacionais para destravar o MVP. Não são resultados experimentais.
+as_of_policy: >
+  Corte por dia civil em UTC. Entram apenas jogos com game_date estritamente
+  anterior ao corte. Jogos no mesmo dia ficam de fora quando a hora de
+  disponibilização não é confiável.
+supervised_population: regular_season_final_only
+playoffs_policy: excluded_from_labels_and_feature_history_in_mvp
+nba_cup_policy: not_separated_until_source_flag_exists
+primary_metric: brier_score
+material_brier_gain: 0.005
+material_gain_status: proposed_gate_not_a_measured_result
+baseline_reference: baseline-home-rate
+public_data_policy: synthetic_fixtures_only
+player_extension: blocked_until_ac_01_to_ac_13
+team_id_namespace: >
+  A API pública usa o id interno. provider_team_id permanece separado.
+  Unicidade de jogo é (provider, source_game_id), conforme a seção 6.3.
+availability_lag_days: 1
+availability_lag_reason: >
+  A data histórica em que o placar se tornou conhecido não vem da fonte.
+  Resumos textuais só ficam recuperáveis no dia seguinte ao jogo.
+calibration_policy: >
+  O calibrador, se ligado, usa só a fatia final da validação, depois do fit.
+  Não participa da promoção. A temporada de teste permanece intocada.
+xgboost_search_policy: >
+  A busca curta de hiperparâmetros do XGBoost usa apenas folds cronológicos
+  do treino. A validação é lida uma vez, depois da escolha.
+promotion_gate: >
+  O challenger só é promovido se o Brier de validação for menor que os
+  baselines com folga material_brier_gain. Esse gate é proposto, não um
+  resultado já medido. performance_verified continua false.
